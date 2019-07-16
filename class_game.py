@@ -74,6 +74,8 @@ class Game:
         label_quit = Label("Quit", "NONSTOP", 28, WHITE, (550, 500))
         image_globe = Image("Globe", (50, 150))
 
+        """ While loop """
+        
         while loop == True:
 
             ## Locks the FPS
@@ -143,8 +145,10 @@ class Game:
         flag_rng = random.randint(0, len(flags_list) - 1)
 
         ## Sets timer to 60 seconds
-        self.timer = 60 * self.FPS
+        self.timer = 1 * self.FPS
         timer_start = False
+
+        """ While loop """
 
         while loop:
 
@@ -262,6 +266,8 @@ class Game:
         ## 'loop' boolean
         loop = True
 
+        """ While loop """
+
         while loop == True:
 
             ## Ticks the clock, locks the FPS to <= 30
@@ -336,7 +342,27 @@ class Game:
         ## Special effect
         list_specialeffect = list()
 
-        ## Loops through the 'event' sequence
+        ## Opens the 'highscores.txt' file, and appends the contents into a list
+        if os.stat(os.path.join("Resources", "High Scores", "highscores.txt")).st_size != 0:
+
+            with open(os.path.join("Resources", "High Scores", "highscores.txt")) as csv_file:
+
+                reader = csv.reader(csv_file, delimiter = "|")
+
+                for row in reader:
+
+                    highscore_list.append(row)
+
+            ## Turns the 0th element in the current iteration of the highscore list into an integer
+            for i in range(len(highscore_list)):
+
+                highscore_list[i][0] = int(highscore_list[i][0])
+
+            ## Sorts the highscore list in ascending order
+            highscore_list.sort(reverse = True)
+
+        """ While loop """
+
         while loop == True:
 
             ## Ticks the clock, locks the FPS to <= 30
@@ -359,23 +385,6 @@ class Game:
                         self.game_state = "start"
                         loop = False
 
-            ## Opens the 'highscores.txt' file, and appends the contents into a list
-            with open(os.path.join("Resources", "High Scores", "highscores.txt")) as csv_file:
-
-                reader = csv.reader(csv_file, delimiter = "|")
-
-                for row in reader:
-
-                    highscore_list.append(row)
-
-            ## Turns the 0th element in the current iteration of the highscore list into an integer
-            for i in range(len(highscore_list)):
-
-                highscore_list[i][0] = int(highscore_list[i][0])
-
-            ## Sorts the highscore list in ascending order
-            highscore_list.sort(reverse = True)
-
             ## Runs the 'depress' method
             label_goback.depress(mouse_position)
 
@@ -385,7 +394,7 @@ class Game:
             ## Checks if 'highscores.txt' file's length is 0 (zero)
             if os.stat(os.path.join("Resources", "High Scores", "highscores.txt")).st_size == 0:
 
-                screen.blit(label_nohighscores.render(), label_nohighscores.position)
+                self.screen.blit(label_nohighscores.render(), label_nohighscores.position)
 
             if appended == False:
 
