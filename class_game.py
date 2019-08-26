@@ -145,7 +145,7 @@ class Game:
         flag_rng = random.randint(0, len(flags_list) - 1)
 
         ## Sets timer to 60 seconds
-        self.timer = 1 * self.FPS
+        self.timer = 60 * self.FPS
         timer_start = False
 
         """ While loop """
