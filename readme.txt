@@ -1,5 +1,5 @@
 Flag Mania
-by Etherflux
+by Zyenapz
 
 Game Version: 2.0
 Python Version: 3.7.0
@@ -15,8 +15,8 @@ Objectives
     (i) Try to score as high as possible under 60 seconds!
 
 Contact information
-    Website: etherflux.github.io
-    E-mail: franztayag@gmail.com
+    Website: zyenapz.github.io
+    E-mail: zyenapz@gmail.com
 
 Notes
     Flag Mania! Guess the flag right, and gain a score, but if you guess wrong, then you'll lose a score! It's simple, really. I might add a 'hardcore' game mode in the future where you instantly lose if you guess wrong.
